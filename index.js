@@ -35,19 +35,6 @@ bot.launch();
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
 
-async function RunUpdate(){
-			console.log('while(true)  worket!!!.....')
-			setInterval(function () {
-			    var date = new Date();
-			    if (date.getHours() === 0 || date.getMinutes() === 0) {
-			    	fetch(process.env.SITE_NAME + 'clear')
-						let gets = process.env.SITE_NAME + 'update';
-						console.log(`${gets}  worket!!!.....`);
-						fetch(gets)
-			    }else
-			    console.log(date.getHours()+' : '+date.getMinutes())
-			}, 1000*60)
-}
 
 app.get('/update',async (req,res)=>{
 		console.log('app.get(/update\')  worket!!!.....')
