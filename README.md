@@ -4,6 +4,8 @@ O'zbekiston banklarining valyuta kurslarini bir joyga yig'adigan Telegram bot â€
 
 ---
 
+**Sahifa:** [abduazizbobomalikovnode.github.io/Valyuta-kursi/](https://abduazizbobomalikovnode.github.io/Valyuta-kursi/)
+
 ## Muammo
 
 Valyuta almashtirmoqchi bo'lgan odam bir nechta kursga duch keladi: Markaziy bank kursi bir xil, har tijorat bankida boshqacha, bozorda yana boshqa. Eng qulayini topish uchun saytlarni birma-bir ochib chiqish kerak.
