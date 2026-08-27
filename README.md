@@ -1,95 +1,77 @@
-# Valyuta Kursi
+# Valyuta kursi
 
-Ushbu loyiha valyuta kurslarini boshqarish va ko'rib chiqish uchun mo'ljallangan. Loyiha Node.js asosida yaratilgan va turli funksionalliklarni amalga oshirish uchun bir nechta modullardan foydalanadi.
+O'zbekiston banklarining valyuta kurslarini bir joyga yig'adigan Telegram bot — grafik va kalkulyatorlari bilan.
 
-## Loyihaning Asosiy Xususiyatlari
-- **Valyuta kurslari haqida ma'lumot olish**: Markaziy bank, bozor va boshqa manbalar asosida valyuta kurslari haqida ma'lumot.
-- **Diagrammalar yaratish**: Valyuta kurslarining o'zgarishini tasvirlash uchun grafiklar va diagrammalar.
-- **Ma'lumotlarni yangilash**: Kurslar ma'lumotlarini avtomatik ravishda yangilash funksiyasi.
+---
 
-## Loyiha Tuzilishi
+## Muammo
 
-### Asosiy Fayllar va Papkalar
-- **`index.js`**: Loyihaning kirish nuqtasi. Dastur shu fayldan ishga tushiriladi.
-- **`package.json`**: Loyihaning konfiguratsiyasi va bog'lamlari.
-- **`DB/`**: Valyuta ma'lumotlari bilan ishlovchi fayllar.
-- **`maxfunction/`**: Modullarga bo'lingan maxsus funksiyalar (masalan, USD, RUB kurslari bilan ishlash).
-- **`plot/`**: Grafiklar yaratish uchun Python va JavaScript kodlari.
-- **`text/`**: Loyihaga oid turli matnli fayllar.
-- **`images/`**: Diagrammalar va valyuta kurslari tasvirlari.
+Valyuta almashtirmoqchi bo'lgan odam bir nechta kursga duch keladi: Markaziy bank kursi bir xil, har tijorat bankida boshqacha, bozorda yana boshqa. Eng qulayini topish uchun saytlarni birma-bir ochib chiqish kerak.
+
+Kurs qay tomonga o'zgarayotganini bilish uchun esa kecha nima bo'lganini eslash kerak — buni hech kim yozib bormaydi.
+
+Kredit yoki omonat hisobi ham shunday: har bankning o'z kalkulyatori, har biri boshqacha ko'rinishda.
+
+## Nima qiladi
+
+- **Kurslarni o'zi yig'adi** — Markaziy bank, tijorat banklari va bozor kursi
+- **Tarixni saqlaydi** — shuning uchun o'zgarishni ko'rsata oladi
+- **Grafik chizadi** — kurs dinamikasi rasm bo'lib chatga keladi
+- **Hisoblab beradi** — kredit to'lovi va omonat foizi
+- **Lotin va kirill** — foydalanuvchi qanday yozsa, shunday tushunadi
+
+## Qanday ishlaydi
+
+Ba'zi banklar kursni API orqali bermaydi — faqat saytda ko'rsatadi. Shu sababli bot sahifani brauzerda ochib o'qiydi (Puppeteer), keyin ma'lumotni bazaga yozadi.
+
+```
+Bank saytlari
+     │  Puppeteer sahifani ochib o'qiydi
+     ▼
+  MongoDB  ──►  tarix to'planadi
+     │
+     ├─► grafik chiziladi        (Python: plotly + kaleido)
+     └─► Telegram'ga yuboriladi  (Telegraf)
+```
+
+Grafik Python tomonida chiziladi — `plotly` bilan yasalib, `kaleido` orqali rasmga o'giriladi va botga qaytariladi.
 
 ## O'rnatish
 
-Loyihani ishlatish uchun quyidagi qadamlarni bajaring:
+```bash
+git clone https://github.com/AbduazizBobomalikovNode/Valyuta-kursi.git
+cd Valyuta-kursi
+npm install
+pip install -r requirements.txt      # plotly, kaleido, pymongo
 
-1. Repozitoriyani klonlash:
-   ```bash
-   git clone https://github.com/AbduazizBobomalikovNode/Valyuta-kursi.git
-   cd Valyuta-kursi
-   ```
-2. Kerakli bog'lamlarni o'rnatish:
-   ```bash
-   npm install
-   ```
-3. Loyihani ishga tushirish:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Loyihani ishga tushirish:
-   ```bash
-   node index.js
-   ```
+cp .env.example .env
+npm start
+```
 
-## Kerakli Dasturlar
-- Node.js (v16 yoki undan yuqori)
-- Python (agar grafiklar yaratish funksiyasi kerak bo'lsa)
+Kerak bo'ladi: Node.js 16+, Python 3, MongoDB. Puppeteer o'rnatilganda Chromium'ni o'zi yuklab oladi.
 
-## 🔐 Muhit o'zgaruvchilari
-  - BOT_TOKEN - sizning  telegram bot  tokeningiz
-  - DATABASE_URL - sizning  MongoDb   cloud dagi tokeningiz
+## Environment
 
-## ⚙ Muhit o'zgaruvchilari Muhitga taminlash
-1. Windows muhiti uchun:
-   ```bash
-   set BOT_TOKEN=sizning_telegram_bot_tokeningiz
-   set DATABASE_URL=sizning_MongoDb_cloud_dagi_tokeningiz
-   ```
-2. Linux muhiti uchun:
-   ```bash
-   export BOT_TOKEN="sizning_telegram_bot_tokeningiz"
-   export DATABASE_URL="sizning_MongoDb_cloud_dagi_tokeningiz"
-   ```
+| O'zgaruvchi | Nima uchun |
+|---|---|
+| `BOT_TOKEN` | [@BotFather](https://t.me/BotFather) bergan token |
+| `NAME_BOT` | Bot foydalanuvchi nomi |
+| `DATE_URL` | MongoDB ulanish satri |
+| `PORT` | Server porti |
+| `YOUR_HOST` | Tashqi manzil (webhook uchun) |
 
-## Foydalanish
+## Tuzilma
 
-Loyihani ishga tushirgandan so'ng, quyidagi funksionalliklardan foydalanishingiz mumkin:
-- Valyuta kurslarini olish.
-- Kurslar asosida grafiklar va diagrammalarni yaratish.
-- Ma'lumotlarni yangilash va boshqarish.
+```
+index.js         bot va server
+updateData/      bank saytlaridan kurs yig'ish (Puppeteer)
+plot/            grafik chizish (Python)
+maxfunction/     hisob-kitob funksiyalari
+DB/              MongoDB ulanishi
+text/            xabar matnlari
+Procfile         serverga joylash uchun
+```
 
+## Texnologiyalar
 
-## Hissa Qo'shish
-
-Agar loyihani rivojlantirishga hissa qo'shmoqchi bo'lsangiz:
-1. Repozitoriyani fork qiling.
-2. O'zingizning branchingizni yarating:
-   ```bash
-   git checkout -b yangi-branch
-   ```
-3. O'zgartirishlarni bajaring va commit qiling.
-   ```bash
-   git commit -m "O'zgartirish tavsifi"
-   ```
-4. Pull request yuboring.
-
-## 📧 Bog'lanish
-
-Loyiha haqida savollaringiz bo'lsa, quyidagi manzilga murojaat qiling:
-- **Muallif:** [Abduaziz Bobomalikov](https://github.com/AbduazizBobomalikovNode)
-- **Telegram:** [Abduaziz Bobomalikov](https://t.me/Bobomalikov_Abduaziz)
-
-
-## Litsenziya
-
-Ushbu loyiha [MIT Litsenziyasi](https://opensource.org/licenses/MIT) ostida tarqatiladi.
-
+Node.js · Telegraf · Puppeteer · MongoDB (Mongoose) · Express · Python (plotly, kaleido)
