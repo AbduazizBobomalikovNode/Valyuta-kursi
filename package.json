@@ -18,6 +18,7 @@
     "puppeteer": "^14.2.1",
     "python-shell": "^3.0.1",
     "promise": "^8.1.0",
-    "telegraf": "^4.8.3"
+    "telegraf": "^4.8.3",
+    "dotenv": "^16.4.5"
   }
 }
