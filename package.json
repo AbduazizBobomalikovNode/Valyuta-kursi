@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "child_process": "^1.0.2",
-    "express": "^4.18.1",
+    "express": "^4.22.3",
     "latin-to-cyrillic": "^1.0.1",
     "mongoose": "^6.3.5",
     "puppeteer": "^14.2.1",
