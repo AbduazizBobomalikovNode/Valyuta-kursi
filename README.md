@@ -24,6 +24,10 @@ Kredit yoki omonat hisobi ham shunday: har bankning o'z kalkulyatori, har biri b
 
 ## Qanday ishlaydi
 
+<p align="center">
+  <img src="images/how-it-works.svg" alt="Bot qanday ishlaydi: bank saytlari → Puppeteer → MongoDB → plotly grafigi → Telegram" width="100%">
+</p>
+
 Ba'zi banklar kursni API orqali bermaydi — faqat saytda ko'rsatadi. Shu sababli bot sahifani brauzerda ochib o'qiydi (Puppeteer), keyin ma'lumotni bazaga yozadi.
 
 ```
