@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" role="img" aria-labelledby="ttl" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+<title id="ttl">Valyuta kursi boti qanday ishlaydi: bank saytlari, Puppeteer, MongoDB, plotly grafigi, Telegram</title>
+<style>
+.t{fill:#e6edf3;font-size:14px;font-weight:600}
+.s{fill:#8b949e;font-size:11px}
+.n{fill:#58a6ff;font-size:11px;font-weight:700;letter-spacing:1px}
+.box{fill:#161b22;stroke:#30363d;stroke-width:1.5}
+.wire{stroke:#30363d;stroke-width:2;fill:none;stroke-dasharray:3 6;animation:flow 1s linear infinite}
+.dot{fill:#58a6ff;opacity:0;filter:drop-shadow(0 0 5px #58a6ff)}
+.scan{animation:scan 1.3s ease-in-out infinite alternate}
+.db{animation:pulse 12s infinite}
+.line{fill:none;stroke:#3fb950;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:200;animation:draw 12s infinite}
+.ask{animation:ask 12s infinite}
+.pop{animation:pop 12s infinite}
+.mini{fill:none;stroke:#3fb950;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes flow{to{stroke-dashoffset:-9}}
+@keyframes scan{from{transform:translateY(0)}to{transform:translateY(60px)}}
+@keyframes pulse{0%,32%,46%,100%{fill:#161b22;stroke:#30363d}38%{fill:#12261b;stroke:#3fb950}}
+@keyframes draw{0%,52%{stroke-dashoffset:200}68%,96%{stroke-dashoffset:0}100%{stroke-dashoffset:200}}
+@keyframes ask{0%,2%{opacity:0}5%,96%{opacity:1}100%{opacity:0}}
+@keyframes pop{0%,77%{opacity:0;transform:translateY(10px)}81%,96%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(0)}}
+</style>
+
+<rect width="1000" height="400" rx="16" fill="#0d1117"/>
+<text x="30" y="40" class="t" font-size="17">Bot qanday ishlaydi</text>
+
+<!-- wires -->
+<path class="wire" d="M180 110C215 110 200 200 235 200"/>
+<path class="wire" d="M180 200H235"/>
+<path class="wire" d="M180 290C215 290 200 200 235 200"/>
+<path class="wire" d="M365 200H430"/>
+<path class="wire" d="M520 200H585"/>
+<path class="wire" d="M725 200H790"/>
+
+<!-- 1. bank sites -->
+<g>
+<rect class="box" x="30" y="82" width="150" height="56" rx="10"/>
+<text class="t" x="46" y="106">Markaziy bank</text><text class="s" x="46" y="124">rasmiy kurs</text>
+<rect class="box" x="30" y="172" width="150" height="56" rx="10"/>
+<text class="t" x="46" y="196">Tijorat banklari</text><text class="s" x="46" y="214">olish / sotish</text>
+<rect class="box" x="30" y="262" width="150" height="56" rx="10"/>
+<text class="t" x="46" y="286">Bozor kursi</text><text class="s" x="46" y="304">naqd bozor</text>
+</g>
+
+<!-- 2. puppeteer browser -->
+<rect class="box" x="235" y="150" width="130" height="100" rx="10"/>
+<path d="M235 170H365" stroke="#30363d" stroke-width="1.5"/>
+<circle cx="248" cy="160" r="3" fill="#f85149"/><circle cx="259" cy="160" r="3" fill="#d29922"/><circle cx="270" cy="160" r="3" fill="#3fb950"/>
+<g fill="#30363d"><rect x="248" y="182" width="80" height="6" rx="3"/><rect x="248" y="197" width="104" height="6" rx="3"/><rect x="248" y="212" width="64" height="6" rx="3"/><rect x="248" y="227" width="92" height="6" rx="3"/></g>
+<rect class="scan" x="240" y="176" width="120" height="3" rx="1.5" fill="#58a6ff" opacity=".9"/>
+<text class="n" x="235" y="278">1 · YIG'ADI</text>
+<text class="t" x="235" y="297">Puppeteer</text>
+<text class="s" x="235" y="314">sahifani ochib o'qiydi</text>
+
+<!-- 3. mongodb -->
+<path class="box db" d="M430 170v60c0 8 20 14 45 14s45-6 45-14v-60"/>
+<ellipse class="box db" cx="475" cy="170" rx="45" ry="14"/>
+<path d="M430 200c0 8 20 14 45 14s45-6 45-14" fill="none" stroke="#30363d" stroke-width="1.5"/>
+<text class="n" x="430" y="278">2 · SAQLAYDI</text>
+<text class="t" x="430" y="297">MongoDB</text>
+<text class="s" x="430" y="314">tarix to'planadi</text>
+
+<!-- 4. plotly chart -->
+<rect class="box" x="585" y="150" width="140" height="100" rx="10"/>
+<path d="M600 162V238H712" fill="none" stroke="#30363d" stroke-width="1.5"/>
+<polyline class="line" points="602,232 620,224 638,229 656,206 674,212 692,188 710,170"/>
+<text class="n" x="585" y="278">3 · CHIZADI</text>
+<text class="t" x="585" y="297">Python · plotly</text>
+<text class="s" x="585" y="314">kaleido rasmga o'giradi</text>
+
+<!-- 5. telegram -->
+<rect class="box" x="790" y="56" width="180" height="300" rx="22"/>
+<path d="M790 92H970" stroke="#30363d" stroke-width="1.5"/>
+<circle cx="812" cy="74" r="9" fill="#2aabee"/>
+<path d="M807 74l10-4-3 9-2.5-3z" fill="#fff"/>
+<text class="t" x="828" y="79" font-size="12">Valyuta kursi</text>
+<g class="ask">
+<rect x="878" y="104" width="80" height="26" rx="13" fill="#1f6feb"/>
+<text x="918" y="121" text-anchor="middle" fill="#fff" font-size="12">USD kursi?</text>
+</g>
+<g class="pop">
+<rect x="802" y="142" width="150" height="158" rx="12" fill="#21262d"/>
+<text class="s" x="814" y="162">Markaziy bank</text><text class="t" x="940" y="162" text-anchor="end" font-size="12">12 150</text>
+<text class="s" x="814" y="182">Banklar</text><text class="t" x="940" y="182" text-anchor="end" font-size="12">12 210</text>
+<text class="s" x="814" y="202">Bozor</text><text class="t" x="940" y="202" text-anchor="end" font-size="12">12 240</text>
+<rect x="814" y="214" width="126" height="74" rx="8" fill="#0d1117"/>
+<polyline class="mini" points="822,278 840,270 858,274 876,254 894,259 912,238 932,224"/>
+</g>
+<text class="n" x="790" y="382">4 · YUBORADI (Telegraf)</text>
+
+<!-- moving data packets -->
+<circle r="5" class="dot"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" path="M180 110C215 110 200 200 235 200" keyPoints="0;0;1;1" keyTimes="0;.03;.15;1"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.03;.04;.14;.15;1"/></circle>
+<circle r="5" class="dot"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" path="M180 200H235" keyPoints="0;0;1;1" keyTimes="0;.07;.19;1"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.07;.08;.18;.19;1"/></circle>
+<circle r="5" class="dot"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" path="M180 290C215 290 200 200 235 200" keyPoints="0;0;1;1" keyTimes="0;.11;.23;1"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.11;.12;.22;.23;1"/></circle>
+<circle r="5" class="dot"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" path="M365 200H430" keyPoints="0;0;1;1" keyTimes="0;.25;.34;1"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.25;.26;.33;.34;1"/></circle>
+<circle r="5" class="dot"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" path="M520 200H585" keyPoints="0;0;1;1" keyTimes="0;.43;.52;1"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.43;.44;.51;.52;1"/></circle>
+<circle r="5" class="dot"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" path="M725 200H790" keyPoints="0;0;1;1" keyTimes="0;.68;.77;1"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.68;.69;.76;.77;1"/></circle>
+</svg>
